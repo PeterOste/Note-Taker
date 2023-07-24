@@ -10,3 +10,14 @@ const dbFilePath = path.join(__dirname, 'db.json');
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/api/notes', (req, res) => {
+    fs.readFile(dbFilePath, 'utf8', (err, data) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ error: 'Failed to read notes.' });
+        }
+        const notes = JSON.parse(data);
+        res.json(notes);
+    });
+});
+
