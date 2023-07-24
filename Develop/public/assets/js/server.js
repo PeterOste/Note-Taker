@@ -21,3 +21,15 @@ app.get('/api/notes', (req, res) => {
     });
 });
 
+app.post('/api/notes', (req, res) => {
+    const { title, text } = req.body;
+    if (!title || !text) {
+      return res.status(400).json({ error: 'Title and text are required.' });
+    }
+
+});
+
+app.listen(PORT, () =>
+    console.log(`App listening at http://localhost:${PORT} 🚀`)
+);
+
