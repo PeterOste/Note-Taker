@@ -26,7 +26,12 @@ app.post('/api/notes', (req, res) => {
     if (!title || !text) {
       return res.status(400).json({ error: 'Title and text are required.' });
     }
-
+    const notes = JSON.parse(data);
+    const newNote = {
+      id: uuidv4(),
+      title,
+      text,
+    };
 });
 
 app.listen(PORT, () =>
