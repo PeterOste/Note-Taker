@@ -15,7 +15,7 @@ app.get('/api/notes', (req, res) => {
     fs.readFile(dbFilePath, 'utf8', (err, data) => {
         if (err) {
           console.error(err);
-          return res.status(500).json({ error: 'Failed to read notes.' });
+          return res.status(500).json({ error: 'Failed to correctly read note.' });
         }
         const notes = JSON.parse(data);
         res.json(notes);
@@ -32,27 +32,28 @@ app.post('/api/notes', (req, res) => {
     fs.readFile(dbFilePath, 'utf8', (err, data) => {
       if (err) {
         console.error(err);
-        return res.status(500).json({ error: 'Failed to correctly read note' });
+        return res.status(500).json({ error: 'Failed to correctly read note.' });
       }
-    })
-
-    const notes = JSON.parse(data);
-    const newNote = {
-      id: uuidv4(),
-      title,
-      text,
-    };
-    
-    // Adds new note to notes array.
-    notes.push(newNote);
-
-    fs.writeFile(dbFilePath, JSON.stringify(notes, null, 2), (err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json({ error: 'Failed to correctly save note' });
-      }
-
-      res.json(newNote);
+      
+      const notes = JSON.parse(data);
+      const newNote = {
+        id: uuidv4(),
+        title,
+        text,
+      };
+      
+      // Adds new note to notes array.
+      notes.push(newNote);
+      
+      fs.writeFile(dbFilePath, JSON.stringify(notes, null, 2), (err) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ error: 'Failed to correctly save note.' });
+        }
+        
+        // The notes array is sent as a response, including the new note.
+        res.json(newNote);
+      });
     });
 });
 
