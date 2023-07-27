@@ -26,6 +26,14 @@ app.post('/api/notes', (req, res) => {
     if (!title || !text) {
       return res.status(400).json({ error: 'Title and text are required.' });
     }
+
+    fs.readFile(dbFilePath, 'utf8', (err, data) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Failed to correctly read note '});
+      }
+    })
+    
     const notes = JSON.parse(data);
     const newNote = {
       id: uuidv4(),
