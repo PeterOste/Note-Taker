@@ -7,6 +7,7 @@ const PORT = process.env.port || 3001;
 const app = express();
 const dbFilePath = path.join(__dirname, 'db', 'db.json');
 
+// Middleware.
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
