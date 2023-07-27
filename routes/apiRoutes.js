@@ -19,7 +19,7 @@ router.get('/notes', (req, res) => {
 });
 
 // Route that saves a new note.
-router.post('/api/notes', (req, res) => {
+router.post('/notes', (req, res) => {
     const { title, text } = req.body;
     if (!title || !text) {
       return res.status(400).json({ error: 'Title and text are required.' });
