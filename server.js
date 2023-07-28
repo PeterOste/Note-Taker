@@ -4,12 +4,12 @@ const htmlRoutes = require('./routes/htmlRoutes');
 const apiRoutes = require('./routes/apiRoutes');
 
 
-const PORT = process.env.port || 3001;
+const PORT = process.env.port || 3003;
 const app = express();
 
 // Middleware.
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
 
 // Use htmlRoutes.
 app.use('/', htmlRoutes);
