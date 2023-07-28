@@ -19,7 +19,7 @@ This is a simple note-taking application that allows users to create and manage 
 
 ## Usage
 1. Open the application by running the command `npm start`.
-2. This will launch the application on your local server. You can access it by navigating to `http://localhost:3000` in your web browser.
+2. This will launch the application on your local server. You can access it by navigating to `http://localhost:3001` in your web browser.
 3. You will be presented with a landing page that contains a link to the notes page.
 4. Click on the link to the notes page to access the note-taking interface.
 5. In the notes page, you can view your existing notes in the left-hand column and create a new note by entering a title and the note's content in the right-hand column.
