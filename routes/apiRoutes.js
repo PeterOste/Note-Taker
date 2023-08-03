@@ -9,11 +9,11 @@ let notes = require('../db/db.json')
 
 const app = express();
 
-// Middleware.
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Route that retrieves an existing note.
+// Route that retrieves an existing note
 router.get('/notes', (req, res) => {
     fs.readFile(dbFilePath, 'utf8', (err, data) => {
         if (err) {
@@ -25,7 +25,7 @@ router.get('/notes', (req, res) => {
     });
 });    
 
-// Route that saves a new note.
+// Route that saves a new note
 router.post('/notes', (req, res) => {
     const { title, text } = req.body;
     if (!title || !text) {
@@ -45,7 +45,7 @@ router.post('/notes', (req, res) => {
         text,
       };
       
-      // Adds new note to notes array.
+      // Adds new note to notes array
       notes.push(newNote);
       
       fs.writeFile(dbFilePath, JSON.stringify(notes, null, 2), (err) => {
@@ -54,13 +54,13 @@ router.post('/notes', (req, res) => {
           return res.status(500).json({ error: 'Failed to correctly save note.' });
         }
         
-        // The notes array is sent as a response, including the new note.
+        // The notes array is sent as a response, including the new note
         res.json(newNote);
       });
     });
 });
 
-// Route that deletes a note.
+// Route that deletes a note
 router.delete('/notes/:id', (req, res) => {
 
   let newArray = [];
@@ -78,7 +78,7 @@ router.delete('/notes/:id', (req, res) => {
       return res.status(500).json({ error: 'Failed to correctly delete note.' });
     }
     
-    // The notes array is sent as a response, including the new note.
+    // The notes array is sent as a response, including the new note
     res.json(notes);
   });
 });

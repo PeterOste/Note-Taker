@@ -8,20 +8,20 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-// Middleware.
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve files from "public"
 app.use(express.static('public'));
 
-// Use htmlRoutes.
+// Use htmlRoutes
 app.use('/', htmlRoutes);
 
-// Use apiRoutes.
+// Use apiRoutes
 app.use('/api', apiRoutes);
 
-// Start web server.
+// Start web server
 app.listen(PORT, () =>
     console.log(`App listening at http://localhost:${PORT} 🚀`)
 );
