@@ -26,29 +26,29 @@ const hide = (elem) => {
 let activeNote = {};
 
 // Define a function to render the appropriate content based on the route
-function renderContent(route) {
-  const appElement = document.getElementById('app');
+// function renderContent(route) {
+//   const appElement = document.getElementById('app');
 
-  if (route === '' || route === '#/') {
-    appElement.innerHTML = '<h1>Landing Page</h1>';
-  } else if (route === '#/notes') {
-    appElement.innerHTML = '<h1>Notes Page</h1>';
-  } else {
-    appElement.innerHTML = '<h1>Page Not Found</h1>';
-  }
-}
+//   if (route === '' || route === '#/') {
+//     appElement.innerHTML = '<h1>Landing Page</h1>';
+//   } else if (route === '#/notes') {
+//     appElement.innerHTML = '<h1>Notes Page</h1>';
+//   } else {
+//     appElement.innerHTML = '<h1>Page Not Found</h1>';
+//   }
+// }
 
 // Function to handle navigation on hash changes
-function handleHashChange() {
-  const route = window.location.hash;
-  renderContent(route);
-}
+// function handleHashChange() {
+//   const route = window.location.hash;
+//   renderContent(route);
+// }
 
-// Add event listener to hash changes
-window.addEventListener('hashchange', handleHashChange);
+// // Add event listener to hash changes
+// window.addEventListener('hashchange', handleHashChange);
 
 // Initial render based on the current hash
-renderContent(window.location.hash);
+// renderContent(window.location.hash);
 
 
 const getNotes = () =>

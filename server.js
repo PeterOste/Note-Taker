@@ -12,6 +12,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Serve files from "public"
+app.use(express.static('public'));
+
 // Use htmlRoutes.
 app.use('/', htmlRoutes);
 

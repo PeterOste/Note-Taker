@@ -5,6 +5,13 @@ const { v4: uuidv4 } = require('uuid');
 
 const router = express.Router();
 const dbFilePath = path.join(__dirname, '..', 'db', 'db.json');
+let notes = require('../db/db.json')
+
+const app = express();
+
+// Middleware.
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Route that retrieves an existing note.
 router.get('/notes', (req, res) => {
@@ -51,6 +58,38 @@ router.post('/notes', (req, res) => {
         res.json(newNote);
       });
     });
+});
+
+router.delete('/notes/:id', (req, res) => {
+  // const{id} = req.params;
+
+  // fs.readFile(dbFilePath, 'utf8', (err, data) => {
+  //   if (err) {
+  //     console.error(err);
+  //     return res.status(500).json({ error: 'Failed to correctly read note.' });
+  //   }
+    
+  //   const notes = JSON.parse(data);
+  // });
+
+  let newArray = [];
+  for (var i = 0; i < notes.length; i++) {
+    if (notes [i].id != req.params.id) {
+      newArray.push(notes [i])
+    }
+  }
+
+  notes = newArray;
+
+  fs.writeFile(dbFilePath, JSON.stringify(notes, null, 2), (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Failed to correctly delete note.' });
+    }
+    
+    // The notes array is sent as a response, including the new note.
+    res.json(notes);
+  });
 });
 
 module.exports = router;
