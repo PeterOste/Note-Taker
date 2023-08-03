@@ -16,7 +16,7 @@ router.get('/notes', (req, res) => {
         const notes = JSON.parse(data);
         res.json(notes);
     });
-});
+});    
 
 // Route that saves a new note.
 router.post('/notes', (req, res) => {
