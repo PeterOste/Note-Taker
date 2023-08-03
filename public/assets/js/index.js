@@ -25,39 +25,13 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
-// Define a function to render the appropriate content based on the route
-// function renderContent(route) {
-//   const appElement = document.getElementById('app');
-
-//   if (route === '' || route === '#/') {
-//     appElement.innerHTML = '<h1>Landing Page</h1>';
-//   } else if (route === '#/notes') {
-//     appElement.innerHTML = '<h1>Notes Page</h1>';
-//   } else {
-//     appElement.innerHTML = '<h1>Page Not Found</h1>';
-//   }
-// }
-
-// Function to handle navigation on hash changes
-// function handleHashChange() {
-//   const route = window.location.hash;
-//   renderContent(route);
-// }
-
-// // Add event listener to hash changes
-// window.addEventListener('hashchange', handleHashChange);
-
-// Initial render based on the current hash
-// renderContent(window.location.hash);
-
-
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+});
 
 const saveNote = (note) =>
   fetch('/api/notes', {
@@ -66,7 +40,7 @@ const saveNote = (note) =>
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(note),
-  });
+});
 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
@@ -74,7 +48,7 @@ const deleteNote = (id) =>
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+});
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);

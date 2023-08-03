@@ -60,17 +60,8 @@ router.post('/notes', (req, res) => {
     });
 });
 
+// Route that deletes a note.
 router.delete('/notes/:id', (req, res) => {
-  // const{id} = req.params;
-
-  // fs.readFile(dbFilePath, 'utf8', (err, data) => {
-  //   if (err) {
-  //     console.error(err);
-  //     return res.status(500).json({ error: 'Failed to correctly read note.' });
-  //   }
-    
-  //   const notes = JSON.parse(data);
-  // });
 
   let newArray = [];
   for (var i = 0; i < notes.length; i++) {
